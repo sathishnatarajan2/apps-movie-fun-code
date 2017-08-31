@@ -3,7 +3,7 @@ spring:
     generate-ddl: true
     properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
   datasource:
-    url: jdbc:mysql://localhost:3306/movies?useSSL=false
+    url: jdbc:mysql://localhost:3306/cf_a87de789_4237_41c0_8e2f_0619b862eef4?useSSL=false
     username: root
 
   mvc.view:

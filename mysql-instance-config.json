@@ -1,0 +1,10 @@
+{
+    "hostname": "10.0.4.72",
+     "jdbcUrl": "jdbc:mysql://10.0.4.72:3306/cf_a87de789_4237_41c0_8e2f_0619b862eef4?user=cYCiWAtBsTcahv3x\u0026password=bdrHO8u8GWidnHsH",
+     "name": "cf_a87de789_4237_41c0_8e2f_0619b862eef4",
+     "password": "bdrHO8u8GWidnHsH",
+     "port": 3306,
+     "uri": "mysql://cYCiWAtBsTcahv3x:bdrHO8u8GWidnHsH@10.0.4.72:3306/cf_a87de789_4237_41c0_8e2f_0619b862eef4?reconnect=true",
+     "username": "cYCiWAtBsTcahv3x",
+    "permissions ":"read-write"
+}

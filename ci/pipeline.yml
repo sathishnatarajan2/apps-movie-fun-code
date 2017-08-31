@@ -1,0 +1,52 @@
+---
+resources:
+- name: moviefun-source
+  type: git
+  source:
+    uri: https://github.com/sathishnatarajan2/apps-movie-fun-code   #<----- REPLACE ME
+    branch: master
+
+- name: deploy-moviefun
+  type: cf
+  source:
+    api: https://api.sys.pikes.pal.pivotal.io/        #<----- REPLACE ME
+    username: {{cf-user}}
+    password: {{cf-password}}
+    organization: nsathish-pal    #<----- REPLACE ME
+    space: test         #<---- REPLACE ME
+    skip_cert_check: true
+
+jobs:
+#- name: test
+#  public: true
+ # plan:
+  #- get: moviefun-source
+   # trigger: true
+  #- task: test
+   # file: attendee-service-source/ci/tasks/test.yml
+
+- name: deploy
+  public: true
+  plan:
+  - get: moviefun-source
+    trigger: true
+  #  passed: [test]
+  - task: package
+    file: moviefun-source/ci/tasks/package.yml
+  - put: deploy-moviefun
+    params:
+      manifest: moviefun-source/manifest.yml
+      path: package-output/moviefun.war
+
+- name: smoke_test
+  public: true
+  plan:
+  - get: moviefun-source
+    trigger: true
+    passed: [deploy]
+  - task: smoke_test
+    file: moviefun-source/ci/tasks/smoke-test.yml
+ #   params:
+  #    MOVIEFUN_SERVICE_URL: https://attendee-service-thirstless-web.apps.pikes.pal.pivotal.io  #<---- REPLACE ME
+###########################
+
